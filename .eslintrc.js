@@ -39,5 +39,7 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 2 : 0,
     'semi': 0,
     'quote-props': 0,
+    'arrow-parens': 0,
+    'no-underscore-dangle': 0,
   }
 }
