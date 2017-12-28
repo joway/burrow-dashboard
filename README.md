@@ -1,21 +1,95 @@
-# Burrow-Dashboard
+# Burrow Dashboard
 
-> A Vue.js project
+Dashboard UI for Kafka Cluster monitoring with [Burrow 1.0 ](https://github.com/linkedin/Burrow) .
 
-## Build Setup
+Only support for `/v3/kafka` API in Burrow .
 
-``` bash
-# install dependencies
-npm install
 
-# serve with hot reload at localhost:8080
-npm run dev
+## Screenshots
 
-# build for production with minification
-npm run build
+#### Select your kafka cluster
 
-# build for production and view the bundle analyzer report
-npm run build --report
+![](screenshots/home.png)
+
+#### Cluster Detail
+
+![](screenshots/cluster-detail.png)
+
+#### Topic offsets 
+
+![](screenshots/topic-offsets.png)
+
+#### Consumer Group Status
+
+refresh / 10s
+
+![](screenshots/consumer-group-status.png)
+
+## Usage
+
+#### Install Burrow
+
+##### go 
+
+```
+$ go get github.com/linkedin/Burrow
+$ cd $GOPATH/src/github.com/linkedin/Burrow
+$ dep ensure
+$ go install
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+#### Configuration Burrow
+
+burrow.toml
+
+```toml
+[general]
+access-control-allow-origin="*"
+
+[logging]
+level="info"
+
+[zookeeper]
+servers=["zk:2181"]
+
+[client-profile.kafka10]
+kafka-version="0.10.1.0"
+client-id="burrow-client"
+
+[cluster.gw]
+class-name="kafka"
+client-profile="kafka10"
+servers=["kafka1:9092"]
+topic-refresh=120
+offset-refresh=10
+
+[consumer.consumer_kafka]
+class-name="kafka"
+cluster="gw"
+servers=["kafka1:9092"]
+client-profile="kafka10"
+start-latest=false
+offsets-topic="__consumer_offsets"
+group-blacklist="^(console-consumer-|python-kafka-consumer-).*$"
+
+[consumer.consumer_zk]
+class-name="kafka_zk"
+cluster="gw"
+servers=["zk:2181"]
+zookeeper-timeout=30
+group-blacklist="^(console-consumer-|python-kafka-consumer-).*$"
+
+[httpserver.default]
+address=":8000"
+
+```
+
+#### Run Burrow Dashboard
+
+```
+git clone git@github.com:joway/burrow-dashboard.git
+cd burrow-dashboard
+
+```
+
+
