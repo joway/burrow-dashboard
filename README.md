@@ -37,6 +37,8 @@ $ dep ensure
 $ go install
 ```
 
+or your can run burrow on docker : [https://github.com/joway/docker-burrow](https://github.com/joway/docker-burrow)
+
 #### Configuration Burrow
 
 burrow.toml
