@@ -4,7 +4,6 @@ Dashboard UI for Kafka Cluster monitoring with [Burrow 1.0 ](https://github.com/
 
 Only support for `/v3/kafka` API in Burrow .
 
-
 ## Screenshots
 
 #### Select your kafka cluster
@@ -86,10 +85,85 @@ address=":8000"
 
 #### Run Burrow Dashboard
 
-```
-git clone git@github.com:joway/burrow-dashboard.git
-cd burrow-dashboard
+##### docker
 
 ```
+$ docker run -e BURROW_BACKEND=http://your-burrow-domain joway/burrow-dashboard:latest
 
+```
 
+##### npm
+
+```
+$ vim src/apis.js // change `baseApi` variable to http://your-burrow-domain
+
+$ npm run dev
+
+```
+
+## Deploy on kubernetes
+
+```yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: kafka-burrow
+  namespace: infra
+  labels:
+    app: kafka-burrow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka-burrow
+  template:
+    metadata:
+      labels:
+        app: kafka-burrow
+    spec:
+      imagePullSecrets:
+      - name: docker.in
+      nodeSelector:
+        role: infra
+      containers:
+      - name: kafka-burrow
+        image: joway/docker-burrow
+        env:
+        - name: ZOOKEEPER_SERVERS
+          value: '"172.31.44.173:2181"'
+        - name: KAFKA_BROKERS
+          value: '"172.31.40.34:9092"'
+        - name: KAFKA_VERSION
+          value: 0.10.1.0
+        ports:
+        - containerPort: 8000
+          name: api
+          protocol: TCP
+      - name: kafka-burrow-dashboard
+        image: joway/burrow-dashboard:latest
+        env:
+          - name: BURROW_BACKEND
+            value: http://kafka-burrow-svc:8000
+        ports:
+        - containerPort: 80
+          name: web
+          protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-burrow-svc
+  namespace: infra
+  labels:
+    app: kafka-burrow
+spec:
+  ports:
+  - port: 8000
+    name: api
+    targetPort: 8000
+  - port: 80
+    name: web
+    targetPort: 80
+  selector:
+    app: kafka-burrow
+```
