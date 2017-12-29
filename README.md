@@ -132,9 +132,9 @@ spec:
         image: joway/docker-burrow
         env:
         - name: ZOOKEEPER_SERVERS
-          value: '"172.31.44.173:2181"'
+          value: '"zk:2181"'
         - name: KAFKA_BROKERS
-          value: '"172.31.40.34:9092"'
+          value: '"kafka1:9092","kafka2:9092"'
         - name: KAFKA_VERSION
           value: 0.10.1.0
         ports:
