@@ -55,7 +55,7 @@ export default {
               labels.push(utils.timestampShorten(offset.timestamp))
             }
 
-            dataset.data.push(offset.lag)
+            dataset.data.push(offset === null ? 0 : offset.lag)
           })
 
           isLabels = true
