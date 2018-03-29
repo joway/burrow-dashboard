@@ -53,8 +53,8 @@ export default {
   },
   async created() {
     this.consumers = await ApiService.listConsumers(this.cluster)
-    this.consumers = _.filter(this.consumers, v => !v.includes('%'))
-    this.topics = await ApiService.listTopics(this.cluster)
+    this.consumers = _.filter(this.consumers, v => !v.includes('%')).sort()
+    this.topics = (await ApiService.listTopics(this.cluster)).sort()
 
     // try to clear useless consumer group
     _.forEach(this.consumers, c => {
