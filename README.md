@@ -14,7 +14,7 @@ Only support for `/v3/kafka` API in Burrow .
 
 ![](screenshots/cluster-detail.png)
 
-#### Topic offsets 
+#### Topic offsets
 
 ![](screenshots/topic-offsets.png)
 
@@ -91,7 +91,6 @@ address=":8000"
 
 ```
 $ docker run -e BURROW_BACKEND=http://your-burrow-domain joway/burrow-dashboard:latest
-
 ```
 
 ##### npm
@@ -99,8 +98,20 @@ $ docker run -e BURROW_BACKEND=http://your-burrow-domain joway/burrow-dashboard:
 ```
 $ vim src/apis.js // change `baseApi` variable to http://your-burrow-domain
 
+$ npm install
 $ npm run dev
+```
 
+###### local docker build
+
+```
+$ npm install
+
+$ npm npm run build
+
+$ docker build -t  -t burrow-dashboard:latest .
+
+$ docker run -e BURROW_BACKEND=http://your-burrow-domain burrow-dashboard:latest
 ```
 
 ## Deploy on kubernetes
