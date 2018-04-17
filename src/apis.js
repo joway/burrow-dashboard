@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseAPI = '/v3/kafka'
+const baseAPI = 'v3/kafka'
 
 const httpGet = (api, params) => (
   axios.get(
