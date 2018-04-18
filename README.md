@@ -37,7 +37,11 @@ $ dep ensure
 $ go install
 ```
 
-or your can run burrow on docker : [https://github.com/joway/docker-burrow](https://github.com/joway/docker-burrow)
+or your can run burrow on docker: [Docker Hub](https://hub.docker.com/r/joway/burrow-dashboard/) / [Github](https://github.com/joway/docker-burrow)
+
+```
+docker pull joway/burrow-dashboard
+```
 
 #### Configuration Burrow
 
