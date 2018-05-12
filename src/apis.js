@@ -6,7 +6,6 @@ const httpGet = (api, params) => (
   axios.get(
     api,
     {
-      timeout: 5000,
       params,
     },
   )
@@ -17,7 +16,6 @@ const httpDel = (api, params) => (
     api,
     {
       withCredentials: true,
-      timeout: 5000,
       params,
     },
   )
