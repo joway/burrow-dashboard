@@ -1,7 +1,7 @@
 {
   "name": "burrow-dashboard",
-  "version": "1.0.2",
-  "description": "A Vue.js project",
+  "version": "1.0.3",
+  "description": "Dashboard for Burrow",
   "author": "Joway Wang <joway.w@gmail.com>",
   "private": true,
   "scripts": {
