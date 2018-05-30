@@ -52,7 +52,7 @@ export default {
           }
           _.forEach(partition.offsets, offset => {
             if (!isLabels) {
-              labels.push(utils.timestampShorten(offset.timestamp))
+              labels.push(utils.timestampShorten(offset === null ? 0 : offset.timestamp))
             }
 
             dataset.data.push(offset === null ? 0 : offset.lag)
