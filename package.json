@@ -19,7 +19,7 @@
     "vue": "^2.5.16",
     "vue-chartjs": "^3.0.2",
     "vue-localstorage": "^0.5.0",
-    "vue-material": "^1.0.0-beta-7",
+    "vue-material": "1.0.0-beta-7",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
