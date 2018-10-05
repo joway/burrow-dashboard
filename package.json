@@ -1,6 +1,6 @@
 {
   "name": "burrow-dashboard",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Dashboard for Burrow",
   "author": "Joway Wang <joway.w@gmail.com>",
   "private": true,
