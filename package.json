@@ -18,7 +18,7 @@
     "randomcolor": "^0.5.3",
     "vue": "^2.5.17",
     "vue-chartjs": "^3.4.0",
-    "vue-localstorage": "^0.5.0",
+    "vue-localstorage": "^0.6.2",
     "vue-material": "1.0.0-beta-10.2",
     "vue-router": "^3.0.1"
   },
