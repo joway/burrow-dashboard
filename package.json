@@ -11,7 +11,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "axios": "^0.17.1",
+    "axios": "^0.18.0",
     "chart.js": "^2.7.3",
     "lodash": "^4.17.11",
     "moment": "^2.21.0",
