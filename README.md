@@ -116,6 +116,9 @@ $ npm npm run build
 $ docker build -t  -t burrow-dashboard:latest .
 
 $ docker run -e BURROW_BACKEND=http://your-burrow-domain burrow-dashboard:latest
+
+// if your burrow-backend running in localhost, you can use:
+$ docker run --network host -e BURROW_BACKEND=http://localhost:8000 -d -p 80:80 joway/burrow-dashboard:latest
 ```
 
 ## Deploy on kubernetes
