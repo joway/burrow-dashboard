@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.18.1",
-    "chart.js": "^2.7.3",
+    "chart.js": "^2.9.4",
     "randomcolor": "^0.5.4",
     "vue": "^2.6.6",
     "vue-chartjs": "^3.4.0",
